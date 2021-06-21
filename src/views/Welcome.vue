@@ -1,12 +1,13 @@
 <template>
 
-  <h2>Welcome</h2>
   <div v-if="showLogin">
+    <h2>Sign In</h2>
     <Login />
     <p>Need to <span @click="showLogin = false">Signup</span>?</p>
   </div>
 
   <div v-else>
+    <h2>Sign Up</h2>
     <Signup />
     <p>Already have an account? <span @click="showLogin = true">Login</span></p>
   </div>

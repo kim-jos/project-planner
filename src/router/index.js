@@ -3,6 +3,20 @@ import Welcome from '../views/Welcome.vue'
 import Signup from '../components/Signup.vue'
 import Login from '../components/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
+import AddProject from '../views/AddProject.vue'
+import EditProject from '../views/EditProject.vue'
+
+import { projectAuth } from '../../firebase/config'
+
+// route guard doesn't work initially because it takes firebase
+// a splite second to recognize that there is a currentUser
+
+// go to main.js to find the solution to this problem
+let requireAuth = async (to, from, next) => {
+  let user = await projectAuth.currentUser
+  if (!user) next({ name: "Welcome" })
+  else next()
+}
 
 const routes = [
   {
@@ -23,9 +37,20 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    beforeEnter: requireAuth
   },
-
+  {
+    path: '/add',
+    name: 'AddProject',
+    component: AddProject
+  },
+  {
+    path: '/project/:id',
+    name: 'EditProject',
+    component: EditProject,
+    props: true
+  }
 ]
 
 const router = createRouter({

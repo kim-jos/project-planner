@@ -2,7 +2,6 @@ import { ref } from 'vue';
 import { projectAuth } from '../firebase/config'
 
 
-
 let error = ref(null);
 
 let logout = () => {
