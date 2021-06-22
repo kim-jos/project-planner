@@ -16,7 +16,6 @@ import { create } from '../../firebase/config'
 import { useRouter } from 'vue-router'
 export default {
   setup() {
-
     let title = ref('');
     let details = ref('');
     let { user } = getUser();
@@ -78,4 +77,11 @@ form button {
   border-radius: 6px;
   font-size: 16px;
 }
+form button:hover {
+  background: #02be80;
+  cursor: pointer;
+}
+
+
+
 </style>

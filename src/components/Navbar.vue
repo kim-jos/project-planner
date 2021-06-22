@@ -2,13 +2,15 @@
 
   <div v-if="user" class="navbar">
     <div>
-      <h3 class="name">Welcome {{ user.displayName }}!</h3>
-      <p class="email"><i> {{ user.email }} </i></p>
+      <router-link class="name" :to="{ name: 'Dashboard'}">
+        <h3 class="name">Welcome <span id="displayName">{{ user.displayName }}!</span></h3>
+      </router-link>
+      <p class="email"><i>{{ user.email }}</i></p>
     </div>
     
-    <div>
+    <div class="btn">
       <router-link :to="{ name: 'Welcome'}">
-        <button @click="logout">Sign Out</button>
+        <button class="signOutBtn" @click="logout">Sign Out</button>
       </router-link>
     </div>
   </div>
@@ -36,8 +38,26 @@ export default {
 }
 .name {
   margin: 5px 0 1px 0;
+  text-decoration: none;
+  color: inherit;
+}
+#displayName {
+  color: #00ce89;
 }
 .email {
   margin-top: 1px;
+}
+.signOutBtn {
+  background: #00ce89;
+  color: white;
+  padding: 5px;
+  border: 0;
+  border-radius: 6px;
+  font-size: 13px;
+  justify-content: center;
+}
+.signOutBtn:hover {
+  background: #02be80;
+  cursor: pointer;
 }
 </style>

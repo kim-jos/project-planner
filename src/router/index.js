@@ -18,11 +18,18 @@ let requireAuth = async (to, from, next) => {
   else next()
 }
 
+// If user is signed in, direct them to dashboard
+let requireNoAuth = async (to, from, next) => {
+  let user = await projectAuth.currentUser
+  if (user) next({ name: "Dashboard" })
+  else next()
+}
 const routes = [
   {
     path: '/',
     name: 'Welcome',
-    component: Welcome
+    component: Welcome,
+    beforeEnter: requireNoAuth
   },
   {
     path: '/signup',
