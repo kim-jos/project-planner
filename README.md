@@ -18,5 +18,5 @@ Route guards were also included to prevent users from directly accessing sites t
 The projects do not disappear if you refresh the page because it is saved in a database. This feature was implemented by using Firebase.
 
 ## Technologies Used
-Frontend: HTML/CSS, JS, and Vue
+Frontend: HTML/CSS, JS, and Vue <br>
 Backend: Firebase (NoSQL database)
